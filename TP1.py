@@ -24,13 +24,10 @@ import matplotlib.pyplot as plt
 def ReductionGauss(Aaug):
    
     if len(Aaug) == len(Aaug[0])-1:
-        n = len(Aaug)
-       
-        for i in range(0, n-1):
-       
+        n = len(Aaug)      
+        for i in range(0, n-1):     
             for k in range(i+1, n):
-                pivot = Aaug[k, i]/Aaug[i, i]
-               
+                pivot = Aaug[k, i]/Aaug[i, i]               
                 for j in range(0,n+1):
                     Aaug[k, j] = Aaug[k, j] - pivot*Aaug[i, j]
                    
@@ -43,22 +40,17 @@ def ReductionGauss(Aaug):
                     # Question 2 #
 #############################################################
 
-def ResolutionSystTriSup(Taug):
-   
+def ResolutionSystTriSup(Taug): 
     n, m = np.shape(Taug)
    
     if m != n+1:
-       
-        print("La matrice entrée n'est pas augmentée")
-   
+        print("La matrice entrée n'est pas augmentée") 
     x = np.zeros(n)
    
     for i in range(n-1, -1, -1):
-        somme = 0
-       
+        somme = 0      
         for k in range(i+1, n):
-            somme = somme + x[k]*Taug[i, k]
-       
+            somme = somme + x[k]*Taug[i, k]      
         x[i] = (Taug[i, -1]-somme)/Taug[i, i]
    
     return x
@@ -91,15 +83,11 @@ def DecompositionLU(A):
     L = np.eye(n)
     U = np.copy(A)
    
-    for i in range(0, n-1):
-   
-        for k in range(i+1, n):
-           
+    for i in range(0, n-1):  
+        for k in range(i+1, n):          
             pivot = U[k, i] / U[i, i]
-            L[k, i] = pivot
-           
-            for j in range(i, n):
-       
+            L[k, i] = pivot     
+            for j in range(i, n):    
                 U[k, j] = U[k, j] - pivot*U[i, j]
    
     return(L,U)
@@ -121,7 +109,6 @@ def ResolutionSystTriInf(Taug):
     x = np.zeros(n)
     for i in range(n):
         somme = 0
-
         for k in range(i):
             somme = somme + x[k]*Taug[i, k]
         x[i] = (Taug[i, -1]-somme)/Taug[i, i]
